@@ -9,24 +9,24 @@ from PIL import Image
 import torchvision
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.models.detection.mask_rcnn import MaskRCNNPredictor
-
+from engine import train_one_epoch, evaluate
+import utils
+import transforms as T
 import yaml
 import dataloader
 import argparse
 
-os.system('git clone https://github.com/pytorch/vision.git')
-os.system('cd vision')
-os.system('git checkout v0.3.0')    
-os.system('cp references/detection/utils.py ../')
-os.system('cp references/detection/transforms.py ../')
-os.system('cp references/detection/coco_eval.py ../')
-os.system('cp references/detection/engine.py ../')
-os.system('cp references/detection/coco_utils.py ../')
+# os.system('git clone https://github.com/pytorch/vision.git')
+# os.system('cd vision')
+# os.system('git checkout v0.3.0')    
+# os.system('cp references/detection/utils.py ../')
+# os.system('cp references/detection/transforms.py ../')
+# os.system('cp references/detection/coco_eval.py ../')
+# os.system('cp references/detection/engine.py ../')
+# os.system('cp references/detection/coco_utils.py ../')
 
 
-from engine import train_one_epoch, evaluate
-import utils
-import transforms as T
+
 
 parser = argparse.ArgumentParser(description='train maskrcnn.')
 parser.add_argument("--config", help="Config file for Mask Rcn", default='./config.yaml')
@@ -88,9 +88,9 @@ def main():
     # cp references/detection/coco_utils.py ../
     # cp references/detection/utils.py ../
 
-    from engine import train_one_epoch, evaluate
-    import utils
-    import transforms as T
+#     from engine import train_one_epoch, evaluate
+#     import utils
+#     import transforms as T
 
     
     dataset = dataloader.Dataset(dataset_path, get_transform(train=True))
